@@ -1,0 +1,61 @@
+.logo-container {
+    height: 48px;
+    margin: 6px;
+
+    .logo {
+        width: 32px;
+        height: 32px;
+        margin: 8px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    h1 {
+        display: inline-block;
+        margin: 0 0 0 12px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+        font-family: Avenir,
+            Helvetica Neue,
+            Arial,
+            Helvetica,
+            sans-serif;
+        vertical-align: middle;
+    }
+
+    // 进入动画
+    .show-in {
+        animation: downIn 0.3s both;
+    }
+
+    @keyframes downIn {
+        from {
+            transform: translate(0, 100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+    }
+
+    // 离开动画
+    .show-out {
+        animation: downOut 0.3s both;
+    }
+
+    @keyframes downOut {
+        from {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        to {
+            transform: translate(0, 100%);
+            opacity: 0;
+        }
+    }
+
+}

@@ -54,6 +54,8 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -97,9 +99,10 @@ module.exports = function (webpackEnv) {
         options: cssOptions,
       },
       {
-        loader: 'less-loader',
+        loader: require.resolve('less-loader'),
         options: {
           modifyVars: aliyunTheme,
+          javascriptEnabled: true,
         },
       },
       {
@@ -437,6 +440,21 @@ module.exports = function (webpackEnv) {
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
               }),
+              // Don't consider CSS imports dead code even if the
+              // containing package claims to have no side effects.
+              // Remove this when webpack adds a warning or an error for this.
+              // See https://github.com/webpack/webpack/issues/6571
+              sideEffects: true,
+            },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders({
+                importLoaders: 3,
+                sourceMap: isEnvProduction && shouldUseSourceMap,
+              },
+                'less-loader'),
+
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
