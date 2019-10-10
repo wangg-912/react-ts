@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 /* import logo from './logo.svg'; */
-import './App.css';
-import SiderDemo from "./layout/Layout"
+
+import "./App.css";
+import AppMain from "./layout/Layout";
 /* import HooksDemo from "./components/HooksDemo" */
 
-const App : React.FC = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <SiderDemo/>
+      <AppMain />
     </div>
   );
-}
+};
 
 export default App;
