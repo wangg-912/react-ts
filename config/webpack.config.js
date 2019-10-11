@@ -1,10 +1,3 @@
-/*
- * @Description: 功能描述
- * @Author: 作者
- * @Date: 2019-09-12 09:53:03
- * @LastEditors: 最后编辑人
- * @LastEditTime: 2019-09-12 10:01:06
- */
 'use strict';
 
 const fs = require('fs');
@@ -60,6 +53,7 @@ const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const aliyunTheme = require('@ant-design/aliyun-theme');
+
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -307,7 +301,7 @@ module.exports = function (webpackEnv) {
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
+        'react-native': 'react-native-web'
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
