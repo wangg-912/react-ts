@@ -4,6 +4,13 @@ import { Menu, Icon } from "antd";
 import { ISubRoute } from "./../../router/config";
 import { MenuProps } from "antd/lib/menu";
 
+type SiderMenuProps = MenuProps & {
+  menus: any;
+  onClick: (e: any) => void;
+  selectedKeys: string[];
+  openKeys: string[];
+  onOpenChange: (v: string[]) => void;
+};
 const renderMenuItem = (
   item: ISubRoute // item.route 菜单单独跳转的路由
 ) => (
