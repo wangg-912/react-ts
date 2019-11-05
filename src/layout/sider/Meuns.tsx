@@ -1,6 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Icon } from "antd";
+import { Menu, Icon } from "antd";
+import { ISubRoute } from "./../../router/config";
+import { MenuProps } from "antd/lib/menu";
+
+const renderMenuItem = (
+  item: ISubRoute // item.route 菜单单独跳转的路由
+) => (
+  <Menu.Item key={item.path}>
+    <Link to={(item.route || item.path) + (item.query || "")}>
+      {item.icon && <Icon type={item.icon} />}
+      <span className="nav-text">{item.title}</span>
+    </Link>
+  </Menu.Item>
+);
+const renderSubMenu = (item: ISubRoute) => (
+  <Menu.SubMenu
+    key={item.path}
+    title={
+      <span>
+        {item.icon && <Icon type={item.icon} />}
+        <span className="nav-text">{item.title}</span>
+      </span>
+    }
+  >
+    {item.subs!.map(item => renderMenuItem(item))}
+  </Menu.SubMenu>
+);
+
 class Menus extends React.Component {
   render() {
     return (

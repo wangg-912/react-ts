@@ -4,3 +4,5 @@ class Page404 extends React.Component {
     return <div>404</div>;
   }
 }
+
+export default Page404;

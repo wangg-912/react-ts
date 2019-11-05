@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import Page from "./Page";
 import * as serviceWorker from "./serviceWorker";
-
+import { AlitaProvider, setConfig } from "redux-alita";
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AlitaProvider>
+      <Page />
+    </AlitaProvider>
+    ,
   </BrowserRouter>,
   document.getElementById("root")
 );

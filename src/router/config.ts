@@ -1,25 +1,54 @@
-export default {
+
+import { string, any } from "prop-types"
+
+export interface IRoutes {
+    path: string;
+    component?: string;
+    title: string;
+    query?: string;
+    icon?: string;
+    route?: string;
+    auth?: boolean;
+    /** 是否登录校验，true不进行校验（访客） */
+    login?: boolean;
+}
+export interface ISubRoute extends IRoutes {
+    subs?: IRoutes[];
+}
+const routes: {
+    routes: ISubRoute[];
+    others: ISubRoute[] | [];
+    [index: string]: any;
+} = {
     routes: [
         {
             path: '/',
-            component: '../components/Table.tsx',
+            component: 'XTable',
             title: "首页",
-            icon: "user"
+            icon: "user",
+            subs: []
         },
         {
             path: '/about',
-            component: '../pages/about/About.tsx',
+            component: 'About',
             title: "关于",
-            icon: "video-camera"
+            icon: "video-camera",
+            subs: []
         },
         {
             path: '/upload',
-            component: '../pages/upload/Upload.tsx',
+            component: 'Upload',
             title: "上传",
-            icon: "upload"
+            icon: "upload",
+            subs: []
         },
         {
-            component: '../pages/404/Page404.tsx'
+            path: '*',
+            component: './../pages/404/Page404.tsx',
+            title: '404'
         },
-    ]
+    ],
+    others: []
 }
+
+export default routes
